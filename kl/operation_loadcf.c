@@ -1,14 +1,4 @@
-#include <stdio.h>
-
-
-#define FILE_PATH "server.conf"
-#define CONFIG_IPADDR "<IP_ADDR>:"
-#define CONFIG_PORT "<PORT_NUM>:"
-#define CONFIG_MAXCONN "<MAX_CLI>:"
-
-char ip_addr[16] = "";
-int port = -1;
-int max_conn = -1;
+#include "operator.h"
 
 	void load_operator_config_setvalue(char* sfield, char* svalue){
 		if (strcmp(CONFIG_IPADDR, sfield) == 0){
