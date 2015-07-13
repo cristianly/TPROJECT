@@ -1,0 +1,766 @@
+07/12/2015 21:43:35 Start simulator
+07/12/2015 21:43:35 Start of funtion loadConfig with path:config/SimConfig.cfg
+07/12/2015 21:43:35 line line: <NUMBER OF ROOMS>:2
+ - 21
+
+07/12/2015 21:43:35 Getting value of "<NUMBER OF ROOMS>:" in line:<NUMBER OF ROOMS>:2
+
+07/12/2015 21:43:35 result:2
+
+07/12/2015 21:43:35 simconfig.nRoomNumbers: 2
+
+07/12/2015 21:43:35 line line: <INTERVAL>:50
+ - 15
+
+07/12/2015 21:43:35 Getting value of "<INTERVAL>:" in line:<INTERVAL>:50
+
+07/12/2015 21:43:35 result:50
+
+07/12/2015 21:43:35 line line: <IPADDRESS>:192.168.94.146
+ - 28
+
+07/12/2015 21:43:35 Getting value of "<IPADDRESS>:" in line:<IPADDRESS>:192.168.94.146
+
+07/12/2015 21:43:35 result:192.168.94.146
+
+07/12/2015 21:43:35 line line: <PORT NUMBER>:5670
+ - 20
+
+07/12/2015 21:43:35 line line: <ROOM ID>:1
+ - 13
+
+07/12/2015 21:43:35 Getting value of "<ROOM ID>:" in line:<ROOM ID>:1
+
+07/12/2015 21:43:35 result:1
+
+07/12/2015 21:43:35 room.roomID: 1
+
+07/12/2015 21:43:35 line line: <SENSOR1>:(1,2)
+ - 17
+
+07/12/2015 21:43:35 sensor1:<SENSOR1>:(1,2)
+ -- 17
+
+07/12/2015 21:43:35 Getting value of "<SENSOR1>:" in line:<SENSOR1>:(1,2)
+
+07/12/2015 21:43:35 result:(1,2)
+
+07/12/2015 21:43:35 sensor11:(1,2)
+ -- 7
+
+07/12/2015 21:43:35 Startting of funtion getPosition
+07/12/2015 21:43:35 line:(1,2)
+-- 7
+07/12/2015 21:43:35 incorrect format
+07/12/2015 21:43:35 room.sensor1: x:-1---y:-1
+
+07/12/2015 21:43:35 line line: <SENSOR2>:(1,2)
+ - 17
+
+07/12/2015 21:43:35 Getting value of "<SENSOR2>:" in line:<SENSOR2>:(1,2)
+
+07/12/2015 21:43:35 result:(1,2)
+
+07/12/2015 21:43:35 Startting of funtion getPosition
+07/12/2015 21:43:35 line:(1,2)
+-- 7
+07/12/2015 21:43:35 incorrect format
+07/12/2015 21:43:35 room.sensor2: x:-1---y:-1
+
+07/12/2015 21:43:35 line line: <SENSOR3>:(1,2)
+ - 17
+
+07/12/2015 21:43:35 Getting value of "<SENSOR3>:" in line:<SENSOR3>:(1,2)
+
+07/12/2015 21:43:35 result:(1,2)
+
+07/12/2015 21:43:35 Startting of funtion getPosition
+07/12/2015 21:43:35 line:(1,2)
+-- 7
+07/12/2015 21:43:35 incorrect format
+07/12/2015 21:43:35 room.sensor3: x:-1---y:-1
+
+07/12/2015 21:43:35 line line: <WIDTH>:10
+ - 12
+
+07/12/2015 21:43:35 Getting value of "<WIDTH>:" in line:<WIDTH>:10
+
+07/12/2015 21:43:35 result:10
+
+07/12/2015 21:43:35 width:10
+
+07/12/2015 21:43:35 line line: <HEIGHT>:10
+ - 13
+
+07/12/2015 21:43:35 Getting value of "<HEIGHT>:" in line:<HEIGHT>:10
+
+07/12/2015 21:43:35 result:10
+
+07/12/2015 21:43:35 height:10
+
+07/12/2015 21:43:35 line line: <ROOM ID>:1
+ - 13
+
+07/12/2015 21:43:35 Getting value of "<ROOM ID>:" in line:<ROOM ID>:1
+
+07/12/2015 21:43:35 result:1
+
+07/12/2015 21:43:35 room.roomID: 1
+
+07/12/2015 21:43:35 line line: <SENSOR1>:(1,2)
+ - 17
+
+07/12/2015 21:43:35 sensor1:<SENSOR1>:(1,2)
+ -- 17
+
+07/12/2015 21:43:35 Getting value of "<SENSOR1>:" in line:<SENSOR1>:(1,2)
+
+07/12/2015 21:43:35 result:(1,2)
+
+07/12/2015 21:43:35 sensor11:(1,2)
+ -- 7
+
+07/12/2015 21:43:35 Startting of funtion getPosition
+07/12/2015 21:43:35 line:(1,2)
+-- 7
+07/12/2015 21:43:35 incorrect format
+07/12/2015 21:43:35 room.sensor1: x:-1---y:-1
+
+07/12/2015 21:43:35 line line: <SENSOR2>:(4,2)
+ - 17
+
+07/12/2015 21:43:35 Getting value of "<SENSOR2>:" in line:<SENSOR2>:(4,2)
+
+07/12/2015 21:43:35 result:(4,2)
+
+07/12/2015 21:43:35 Startting of funtion getPosition
+07/12/2015 21:43:35 line:(4,2)
+-- 7
+07/12/2015 21:43:35 incorrect format
+07/12/2015 21:43:35 room.sensor2: x:-1---y:-1
+
+07/12/2015 21:43:35 line line: <SENSOR3>:(6,2)
+ - 17
+
+07/12/2015 21:43:35 Getting value of "<SENSOR3>:" in line:<SENSOR3>:(6,2)
+
+07/12/2015 21:43:35 result:(6,2)
+
+07/12/2015 21:43:35 Startting of funtion getPosition
+07/12/2015 21:43:35 line:(6,2)
+-- 7
+07/12/2015 21:43:35 incorrect format
+07/12/2015 21:43:35 room.sensor3: x:-1---y:-1
+
+07/12/2015 21:43:35 line line: <WIDTH>:10
+ - 12
+
+07/12/2015 21:43:35 Getting value of "<WIDTH>:" in line:<WIDTH>:10
+
+07/12/2015 21:43:35 result:10
+
+07/12/2015 21:43:35 width:10
+
+07/12/2015 21:43:35 line line: <HEIGHT>:10
+ - 13
+
+07/12/2015 21:43:35 Getting value of "<HEIGHT>:" in line:<HEIGHT>:10
+
+07/12/2015 21:43:35 result:10
+
+07/12/2015 21:43:35 height:10
+
+07/12/2015 21:43:35 Start of function start()
+07/12/2015 21:43:35 Start listening...
+07/12/2015 21:43:35 Start of function getSocket
+07/12/2015 22:04:00 Start simulator
+07/12/2015 22:04:00 Start of funtion loadConfig with path:config/SimConfig.cfg
+07/12/2015 22:04:00 Getting value of "<NUMBER OF ROOMS>:" in line:<NUMBER OF ROOMS>:2
+
+07/12/2015 22:04:00 result:2
+
+07/12/2015 22:04:00 Getting value of "<INTERVAL>:" in line:<INTERVAL>:50
+
+07/12/2015 22:04:00 result:50
+
+07/12/2015 22:04:00 Getting value of "<IPADDRESS>:" in line:<IPADDRESS>:192.168.94.146
+
+07/12/2015 22:04:00 result:192.168.94.146
+
+07/12/2015 22:04:00 Getting value of "<ROOM ID>:" in line:<ROOM ID>:1
+
+07/12/2015 22:04:00 result:1
+
+07/12/2015 22:04:00 Getting value of "<SENSOR1>:" in line:<SENSOR1>:(1,2)
+
+07/12/2015 22:04:00 result:(1,2)
+
+07/12/2015 22:04:00 Startting of funtion getPosition
+07/12/2015 22:04:00 ax:(1,2)
+
+07/12/2015 22:04:00 x:(1,2)
+
+07/12/2015 22:04:00 y:
+
+07/12/2015 22:04:00 Getting value of "<SENSOR2>:" in line:<SENSOR2>:(1,2)
+
+07/12/2015 22:04:00 result:(1,2)
+
+07/12/2015 22:04:00 Startting of funtion getPosition
+07/12/2015 22:04:00 ax:(1,2)
+
+07/12/2015 22:04:00 x:(1,2)
+
+07/12/2015 22:04:00 y:
+
+07/12/2015 22:04:00 room.sensor2: x:0---y:0
+
+07/12/2015 22:04:00 Getting value of "<SENSOR3>:" in line:<SENSOR3>:(1,2)
+
+07/12/2015 22:04:00 result:(1,2)
+
+07/12/2015 22:04:00 Startting of funtion getPosition
+07/12/2015 22:04:00 ax:(1,2)
+
+07/12/2015 22:04:00 x:(1,2)
+
+07/12/2015 22:04:00 y:
+
+07/12/2015 22:04:00 room.sensor3: x:0---y:0
+
+07/12/2015 22:04:00 Getting value of "<WIDTH>:" in line:<WIDTH>:10
+
+07/12/2015 22:04:00 result:10
+
+07/12/2015 22:04:00 width:10
+
+07/12/2015 22:04:00 Getting value of "<HEIGHT>:" in line:<HEIGHT>:10
+
+07/12/2015 22:04:00 result:10
+
+07/12/2015 22:04:00 height:10
+
+07/12/2015 22:04:00 Getting value of "<ROOM ID>:" in line:<ROOM ID>:1
+
+07/12/2015 22:04:00 result:1
+
+07/12/2015 22:04:00 Getting value of "<SENSOR1>:" in line:<SENSOR1>:(1,2)
+
+07/12/2015 22:04:00 result:(1,2)
+
+07/12/2015 22:04:00 Startting of funtion getPosition
+07/12/2015 22:04:00 ax:(1,2)
+
+07/12/2015 22:04:00 x:(1,2)
+
+07/12/2015 22:04:00 y:
+
+07/12/2015 22:04:00 Getting value of "<SENSOR2>:" in line:<SENSOR2>:(4,2)
+
+07/12/2015 22:04:00 result:(4,2)
+
+07/12/2015 22:04:00 Startting of funtion getPosition
+07/12/2015 22:04:00 ax:(4,2)
+
+07/12/2015 22:04:00 x:(4,2)
+
+07/12/2015 22:04:00 y:
+
+07/12/2015 22:04:00 room.sensor2: x:0---y:0
+
+07/12/2015 22:04:00 Getting value of "<SENSOR3>:" in line:<SENSOR3>:(6,2)
+
+07/12/2015 22:04:00 result:(6,2)
+
+07/12/2015 22:04:00 Startting of funtion getPosition
+07/12/2015 22:04:00 ax:(6,2)
+
+07/12/2015 22:04:00 x:(6,2)
+
+07/12/2015 22:04:00 y:
+
+07/12/2015 22:04:00 room.sensor3: x:0---y:0
+
+07/12/2015 22:04:00 Getting value of "<WIDTH>:" in line:<WIDTH>:10
+
+07/12/2015 22:04:00 result:10
+
+07/12/2015 22:04:00 width:10
+
+07/12/2015 22:04:00 Getting value of "<HEIGHT>:" in line:<HEIGHT>:10
+
+07/12/2015 22:04:00 result:10
+
+07/12/2015 22:04:00 height:10
+
+07/12/2015 22:04:00 Start of function start()
+07/12/2015 22:04:00 Start listening...
+07/12/2015 22:04:00 Start of function getSocket
+07/12/2015 22:05:57 Start simulator
+07/12/2015 22:05:57 Start of funtion loadConfig with path:config/SimConfig.cfg
+07/12/2015 22:05:57 Getting value of "<NUMBER OF ROOMS>:" in line:<NUMBER OF ROOMS>:2
+
+07/12/2015 22:05:57 result:2
+
+07/12/2015 22:05:57 Getting value of "<INTERVAL>:" in line:<INTERVAL>:50
+
+07/12/2015 22:05:57 result:50
+
+07/12/2015 22:05:57 Getting value of "<IPADDRESS>:" in line:<IPADDRESS>:192.168.94.146
+
+07/12/2015 22:05:57 result:192.168.94.146
+
+07/12/2015 22:05:57 Getting value of "<ROOM ID>:" in line:<ROOM ID>:1
+
+07/12/2015 22:05:57 result:1
+
+07/12/2015 22:05:57 Getting value of "<SENSOR1>:" in line:<SENSOR1>:(1,2)
+
+07/12/2015 22:05:57 result:(1,2)
+
+07/12/2015 22:05:57 Startting of funtion getPosition
+07/12/2015 22:05:57 y:1,,2)
+
+07/12/2015 22:05:57 y:
+
+07/12/2015 22:05:57 Getting value of "<SENSOR2>:" in line:<SENSOR2>:(1,2)
+
+07/12/2015 22:05:57 result:(1,2)
+
+07/12/2015 22:05:57 Startting of funtion getPosition
+07/12/2015 22:05:57 y:1,,2)
+
+07/12/2015 22:05:57 y:
+
+07/12/2015 22:05:57 room.sensor2: x:0---y:0
+
+07/12/2015 22:05:57 Getting value of "<SENSOR3>:" in line:<SENSOR3>:(1,2)
+
+07/12/2015 22:05:57 result:(1,2)
+
+07/12/2015 22:05:57 Startting of funtion getPosition
+07/12/2015 22:05:57 y:1,,2)
+
+07/12/2015 22:05:57 y:
+
+07/12/2015 22:05:57 room.sensor3: x:0---y:0
+
+07/12/2015 22:05:57 Getting value of "<WIDTH>:" in line:<WIDTH>:10
+
+07/12/2015 22:05:57 result:10
+
+07/12/2015 22:05:57 width:10
+
+07/12/2015 22:05:57 Getting value of "<HEIGHT>:" in line:<HEIGHT>:10
+
+07/12/2015 22:05:57 result:10
+
+07/12/2015 22:05:57 height:10
+
+07/12/2015 22:05:57 Getting value of "<ROOM ID>:" in line:<ROOM ID>:1
+
+07/12/2015 22:05:57 result:1
+
+07/12/2015 22:05:57 Getting value of "<SENSOR1>:" in line:<SENSOR1>:(1,2)
+
+07/12/2015 22:05:57 result:(1,2)
+
+07/12/2015 22:05:57 Startting of funtion getPosition
+07/12/2015 22:05:57 y:1,,2)
+
+07/12/2015 22:05:57 y:
+
+07/12/2015 22:05:57 Getting value of "<SENSOR2>:" in line:<SENSOR2>:(4,2)
+
+07/12/2015 22:05:57 result:(4,2)
+
+07/12/2015 22:05:57 Startting of funtion getPosition
+07/12/2015 22:05:57 y:4,,2)
+
+07/12/2015 22:05:57 y:
+
+07/12/2015 22:05:57 room.sensor2: x:0---y:0
+
+07/12/2015 22:05:57 Getting value of "<SENSOR3>:" in line:<SENSOR3>:(6,2)
+
+07/12/2015 22:05:57 result:(6,2)
+
+07/12/2015 22:05:57 Startting of funtion getPosition
+07/12/2015 22:05:57 y:6,,2)
+
+07/12/2015 22:05:57 y:
+
+07/12/2015 22:05:57 room.sensor3: x:0---y:0
+
+07/12/2015 22:05:57 Getting value of "<WIDTH>:" in line:<WIDTH>:10
+
+07/12/2015 22:05:57 result:10
+
+07/12/2015 22:05:57 width:10
+
+07/12/2015 22:05:57 Getting value of "<HEIGHT>:" in line:<HEIGHT>:10
+
+07/12/2015 22:05:57 result:10
+
+07/12/2015 22:05:57 height:10
+
+07/12/2015 22:05:57 Start of function start()
+07/12/2015 22:05:57 Start listening...
+07/12/2015 22:05:57 Start of function getSocket
+07/12/2015 22:06:42 Start simulator
+07/12/2015 22:06:42 Start of funtion loadConfig with path:config/SimConfig.cfg
+07/12/2015 22:06:42 Getting value of "<NUMBER OF ROOMS>:" in line:<NUMBER OF ROOMS>:2
+
+07/12/2015 22:06:42 result:2
+
+07/12/2015 22:06:42 Getting value of "<INTERVAL>:" in line:<INTERVAL>:50
+
+07/12/2015 22:06:42 result:50
+
+07/12/2015 22:06:42 Getting value of "<IPADDRESS>:" in line:<IPADDRESS>:192.168.94.146
+
+07/12/2015 22:06:42 result:192.168.94.146
+
+07/12/2015 22:06:42 Getting value of "<ROOM ID>:" in line:<ROOM ID>:1
+
+07/12/2015 22:06:42 result:1
+
+07/12/2015 22:06:42 Getting value of "<SENSOR1>:" in line:<SENSOR1>:(1,2)
+
+07/12/2015 22:06:42 result:(1,2)
+
+07/12/2015 22:06:42 Startting of funtion getPosition
+07/12/2015 22:06:42 x:1,,2)
+
+07/12/2015 22:06:42 y:
+
+07/12/2015 22:06:42 Getting value of "<SENSOR2>:" in line:<SENSOR2>:(1,2)
+
+07/12/2015 22:06:42 result:(1,2)
+
+07/12/2015 22:06:42 Startting of funtion getPosition
+07/12/2015 22:06:42 x:1,,2)
+
+07/12/2015 22:06:42 y:
+
+07/12/2015 22:06:42 room.sensor2: x:0---y:0
+
+07/12/2015 22:06:42 Getting value of "<SENSOR3>:" in line:<SENSOR3>:(1,2)
+
+07/12/2015 22:06:42 result:(1,2)
+
+07/12/2015 22:06:42 Startting of funtion getPosition
+07/12/2015 22:06:42 x:1,,2)
+
+07/12/2015 22:06:42 y:
+
+07/12/2015 22:06:42 room.sensor3: x:0---y:0
+
+07/12/2015 22:06:42 Getting value of "<WIDTH>:" in line:<WIDTH>:10
+
+07/12/2015 22:06:42 result:10
+
+07/12/2015 22:06:42 width:10
+
+07/12/2015 22:06:42 Getting value of "<HEIGHT>:" in line:<HEIGHT>:10
+
+07/12/2015 22:06:42 result:10
+
+07/12/2015 22:06:42 height:10
+
+07/12/2015 22:06:42 Getting value of "<ROOM ID>:" in line:<ROOM ID>:1
+
+07/12/2015 22:06:42 result:1
+
+07/12/2015 22:06:42 Getting value of "<SENSOR1>:" in line:<SENSOR1>:(1,2)
+
+07/12/2015 22:06:42 result:(1,2)
+
+07/12/2015 22:06:42 Startting of funtion getPosition
+07/12/2015 22:06:42 x:1,,2)
+
+07/12/2015 22:06:42 y:
+
+07/12/2015 22:06:42 Getting value of "<SENSOR2>:" in line:<SENSOR2>:(4,2)
+
+07/12/2015 22:06:42 result:(4,2)
+
+07/12/2015 22:06:42 Startting of funtion getPosition
+07/12/2015 22:06:42 x:4,,2)
+
+07/12/2015 22:06:42 y:
+
+07/12/2015 22:06:42 room.sensor2: x:0---y:0
+
+07/12/2015 22:06:42 Getting value of "<SENSOR3>:" in line:<SENSOR3>:(6,2)
+
+07/12/2015 22:06:42 result:(6,2)
+
+07/12/2015 22:06:42 Startting of funtion getPosition
+07/12/2015 22:06:42 x:6,,2)
+
+07/12/2015 22:06:42 y:
+
+07/12/2015 22:06:42 room.sensor3: x:0---y:0
+
+07/12/2015 22:06:42 Getting value of "<WIDTH>:" in line:<WIDTH>:10
+
+07/12/2015 22:06:42 result:10
+
+07/12/2015 22:06:42 width:10
+
+07/12/2015 22:06:42 Getting value of "<HEIGHT>:" in line:<HEIGHT>:10
+
+07/12/2015 22:06:42 result:10
+
+07/12/2015 22:06:42 height:10
+
+07/12/2015 22:06:42 Start of function start()
+07/12/2015 22:06:42 Start listening...
+07/12/2015 22:06:42 Start of function getSocket
+07/12/2015 23:09:06 Start simulator
+07/12/2015 23:09:06 Start of funtion loadConfig with path:config/SimConfig.cfg
+07/12/2015 23:09:06 Getting value of "<NUMBER OF ROOMS>:" in line:<NUMBER OF ROOMS>:2
+
+07/12/2015 23:09:06 result:2
+
+07/12/2015 23:09:06 Getting value of "<INTERVAL>:" in line:<INTERVAL>:50
+
+07/12/2015 23:09:06 result:50
+
+07/12/2015 23:09:06 Getting value of "<IPADDRESS>:" in line:<IPADDRESS>:192.168.94.146
+
+07/12/2015 23:09:06 result:192.168.94.146
+
+07/12/2015 23:09:06 Getting value of "<ROOM ID>:" in line:<ROOM ID>:1
+
+07/12/2015 23:09:06 result:1
+
+07/12/2015 23:09:06 Getting value of "<SENSOR1>:" in line:<SENSOR1>:(1,2)
+
+07/12/2015 23:09:06 result:(1,2)
+
+07/12/2015 23:09:06 Startting of funtion getPosition
+07/12/2015 23:09:06 semicolonPosition:,2)
+
+07/12/2015 23:09:06 x:11,2)
+
+07/12/2015 23:09:06 y:
+
+07/12/2015 23:09:06 Getting value of "<SENSOR2>:" in line:<SENSOR2>:(1,2)
+
+07/12/2015 23:09:06 result:(1,2)
+
+07/12/2015 23:09:06 Startting of funtion getPosition
+07/12/2015 23:09:06 semicolonPosition:,2)
+
+07/12/2015 23:09:06 x:11,2)
+
+07/12/2015 23:09:06 y:
+
+07/12/2015 23:09:06 room.sensor2: x:0---y:0
+
+07/12/2015 23:09:06 Getting value of "<SENSOR3>:" in line:<SENSOR3>:(1,2)
+
+07/12/2015 23:09:06 result:(1,2)
+
+07/12/2015 23:09:06 Startting of funtion getPosition
+07/12/2015 23:09:06 semicolonPosition:,2)
+
+07/12/2015 23:09:06 x:11,2)
+
+07/12/2015 23:09:06 y:
+
+07/12/2015 23:09:06 room.sensor3: x:0---y:0
+
+07/12/2015 23:09:06 Getting value of "<WIDTH>:" in line:<WIDTH>:10
+
+07/12/2015 23:09:06 result:10
+
+07/12/2015 23:09:06 width:10
+
+07/12/2015 23:09:06 Getting value of "<HEIGHT>:" in line:<HEIGHT>:10
+
+07/12/2015 23:09:06 result:10
+
+07/12/2015 23:09:06 height:10
+
+07/12/2015 23:09:06 Getting value of "<ROOM ID>:" in line:<ROOM ID>:1
+
+07/12/2015 23:09:06 result:1
+
+07/12/2015 23:09:06 Getting value of "<SENSOR1>:" in line:<SENSOR1>:(1,2)
+
+07/12/2015 23:09:06 result:(1,2)
+
+07/12/2015 23:09:06 Startting of funtion getPosition
+07/12/2015 23:09:06 semicolonPosition:,2)
+
+07/12/2015 23:09:06 x:11,2)
+
+07/12/2015 23:09:06 y:
+
+07/12/2015 23:09:06 Getting value of "<SENSOR2>:" in line:<SENSOR2>:(4,2)
+
+07/12/2015 23:09:06 result:(4,2)
+
+07/12/2015 23:09:06 Startting of funtion getPosition
+07/12/2015 23:09:06 semicolonPosition:,2)
+
+07/12/2015 23:09:06 x:44,2)
+
+07/12/2015 23:09:06 y:
+
+07/12/2015 23:09:06 room.sensor2: x:0---y:0
+
+07/12/2015 23:09:06 Getting value of "<SENSOR3>:" in line:<SENSOR3>:(6,2)
+
+07/12/2015 23:09:06 result:(6,2)
+
+07/12/2015 23:09:06 Startting of funtion getPosition
+07/12/2015 23:09:06 semicolonPosition:,2)
+
+07/12/2015 23:09:06 x:66,2)
+
+07/12/2015 23:09:06 y:
+
+07/12/2015 23:09:06 room.sensor3: x:0---y:0
+
+07/12/2015 23:09:06 Getting value of "<WIDTH>:" in line:<WIDTH>:10
+
+07/12/2015 23:09:06 result:10
+
+07/12/2015 23:09:06 width:10
+
+07/12/2015 23:09:06 Getting value of "<HEIGHT>:" in line:<HEIGHT>:10
+
+07/12/2015 23:09:06 result:10
+
+07/12/2015 23:09:06 height:10
+
+07/12/2015 23:09:06 Start of function start()
+07/12/2015 23:09:06 Start listening...
+07/12/2015 23:09:06 Start of function getSocket
+07/12/2015 23:12:09 Start simulator
+07/12/2015 23:12:09 Start of funtion loadConfig with path:config/SimConfig.cfg
+07/12/2015 23:12:09 Getting value of "<NUMBER OF ROOMS>:" in line:<NUMBER OF ROOMS>:2
+
+07/12/2015 23:12:09 result:2
+
+07/12/2015 23:12:09 Getting value of "<INTERVAL>:" in line:<INTERVAL>:50
+
+07/12/2015 23:12:09 result:50
+
+07/12/2015 23:12:09 Getting value of "<IPADDRESS>:" in line:<IPADDRESS>:192.168.94.146
+
+07/12/2015 23:12:09 result:192.168.94.146
+
+07/12/2015 23:12:09 Getting value of "<ROOM ID>:" in line:<ROOM ID>:1
+
+07/12/2015 23:12:09 result:1
+
+07/12/2015 23:12:09 Getting value of "<SENSOR1>:" in line:<SENSOR1>:(1,2)
+
+07/12/2015 23:12:09 result:(1,2)
+
+07/12/2015 23:12:09 Startting of funtion getPosition
+07/12/2015 23:12:09 semicolonPosition:,2)
+
+07/12/2015 23:12:09 x:1,,2)
+
+07/12/2015 23:12:09 y:
+
+07/12/2015 23:12:09 Getting value of "<SENSOR2>:" in line:<SENSOR2>:(1,2)
+
+07/12/2015 23:12:09 result:(1,2)
+
+07/12/2015 23:12:09 Startting of funtion getPosition
+07/12/2015 23:12:09 semicolonPosition:,2)
+
+07/12/2015 23:12:09 x:1,,2)
+
+07/12/2015 23:12:09 y:
+
+07/12/2015 23:12:09 room.sensor2: x:0---y:0
+
+07/12/2015 23:12:09 Getting value of "<SENSOR3>:" in line:<SENSOR3>:(1,2)
+
+07/12/2015 23:12:09 result:(1,2)
+
+07/12/2015 23:12:09 Startting of funtion getPosition
+07/12/2015 23:12:09 semicolonPosition:,2)
+
+07/12/2015 23:12:09 x:1,,2)
+
+07/12/2015 23:12:09 y:
+
+07/12/2015 23:12:09 room.sensor3: x:0---y:0
+
+07/12/2015 23:12:09 Getting value of "<WIDTH>:" in line:<WIDTH>:10
+
+07/12/2015 23:12:09 result:10
+
+07/12/2015 23:12:09 width:10
+
+07/12/2015 23:12:09 Getting value of "<HEIGHT>:" in line:<HEIGHT>:10
+
+07/12/2015 23:12:09 result:10
+
+07/12/2015 23:12:09 height:10
+
+07/12/2015 23:12:09 Getting value of "<ROOM ID>:" in line:<ROOM ID>:1
+
+07/12/2015 23:12:09 result:1
+
+07/12/2015 23:12:09 Getting value of "<SENSOR1>:" in line:<SENSOR1>:(1,2)
+
+07/12/2015 23:12:09 result:(1,2)
+
+07/12/2015 23:12:09 Startting of funtion getPosition
+07/12/2015 23:12:09 semicolonPosition:,2)
+
+07/12/2015 23:12:09 x:1,,2)
+
+07/12/2015 23:12:09 y:
+
+07/12/2015 23:12:09 Getting value of "<SENSOR2>:" in line:<SENSOR2>:(4,2)
+
+07/12/2015 23:12:09 result:(4,2)
+
+07/12/2015 23:12:09 Startting of funtion getPosition
+07/12/2015 23:12:09 semicolonPosition:,2)
+
+07/12/2015 23:12:09 x:4,,2)
+
+07/12/2015 23:12:09 y:
+
+07/12/2015 23:12:09 room.sensor2: x:0---y:0
+
+07/12/2015 23:12:09 Getting value of "<SENSOR3>:" in line:<SENSOR3>:(6,2)
+
+07/12/2015 23:12:09 result:(6,2)
+
+07/12/2015 23:12:09 Startting of funtion getPosition
+07/12/2015 23:12:09 semicolonPosition:,2)
+
+07/12/2015 23:12:09 x:6,,2)
+
+07/12/2015 23:12:09 y:
+
+07/12/2015 23:12:09 room.sensor3: x:0---y:0
+
+07/12/2015 23:12:09 Getting value of "<WIDTH>:" in line:<WIDTH>:10
+
+07/12/2015 23:12:09 result:10
+
+07/12/2015 23:12:09 width:10
+
+07/12/2015 23:12:09 Getting value of "<HEIGHT>:" in line:<HEIGHT>:10
+
+07/12/2015 23:12:09 result:10
+
+07/12/2015 23:12:09 height:10
+
+07/12/2015 23:12:09 Start of function start()
+07/12/2015 23:12:09 Start listening...
+07/12/2015 23:12:09 Start of function getSocket
