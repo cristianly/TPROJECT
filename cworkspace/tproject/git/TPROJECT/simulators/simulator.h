@@ -75,6 +75,9 @@ struct object{
 #define PROGRAME_NAME			"Simulator"
 #define MAX_ROOM				256
 #define INVALID_POSITION		-1
+#define DIVIDE_MSG_ADDROOM		';'
+#define STATUS_STOP 			0
+#define STATUS_START 			1
 
 //parse key
 #define NUMBER_OF_ROOMS			"<NUMBER OF ROOMS>:"
@@ -92,6 +95,7 @@ struct object{
 #define MAX_OJ					"<MAX OJ>:"
 #define START_ROOM_LIST			"<START ROOM LIST>:"
 #define END_ROOM_LIST			"<END ROOM LIST>:"
+#define FIRSTCHAR_LABEL			'<'
 #define NUMBER_ITEMS_OF_ROOM	7
 #define DIVIDE_CHAR				':'
 #define FIRST_CHAR
@@ -103,6 +107,10 @@ struct object{
 #define RESP_RUNNING_MESG		"Simulator is running"
 #define RESP_STOPPED_MESG		"Simulator is stopped"
 #define RESP_UNKNOWN_MESG		"Unknown status"
+#define MSG_CANN_STOP_ROOM		"This room was stopped or no room has this id"
+#define MSG_STOP_ROOM_SUCCESS 	"This room was stopped successfully"
+#define MSG_CANN_RM_ROOM		"There is no room has this id"
+#define MSG_RM_ROOM_SUCCESS 	"This room was removed successfully"
 
 #define LISTENER_THREAD_ID		0;
 
@@ -135,5 +143,6 @@ typedef struct SimConfig
 	struct Room 	roomList[MAX_ROOM];
 };
 
-#define MSG_STATUS_ROOM_NULL	"There is no room which has this ID or this room was stopped!"
+#define MSG_STATUS_ROOM_NULL	"There is no room which has this ID!"
+#define MSG_STATUS_ROOM_STOP	"This room was stopped!"
 

@@ -5,10 +5,13 @@ struct SimConfig simconfig;
 static int hPIDF 			= -1;
 bool bIsListenerStop 		= false;
 int nSimulatorStatus 		= STOPPED;
+int main_sockfd;
 
 int nRoomCounter 	= 0;
 int msg_status_room  = NULL_MSG_STATUS;
-sem_t semaphore;
+sem_t semaphore_file;
+sem_t semaphore_room;
+int RoomStatus[MAX_ROOM] = {STATUS_STOP};
 
 int random_segment(int from, int to){
 	//srand(time(NULL));
@@ -110,7 +113,7 @@ void* liveRoom(void* arg){
 			 msg_status_room = NULL_MSG_STATUS;
 		 }
 		 //Generate object belong with time period
-		 pthread_t toj;
+		 pthread_t toj = 1;
 		 if (time_period == 0){
 			 if (num_object < thisroom->max_object){
 				 pos = 0;
@@ -133,7 +136,6 @@ void* liveRoom(void* arg){
 					 struct object o1 = objects[pos];
 					 printf("ROOMID = %d\n r = %d dm\n x = %d\n y = %d\n lifetime = %d s\n interval = %d s\n moving distant = %d dm number object = %d  \n\n",thisroom->roomID, o1.radius, o1.pos_x, o1.pos_y, o1.lifetime, o1.interval, o1.moving, num_object);
 					 //sendObjectData(objects[pos], thisroom, sockdf);
-
 				 }
 			 }
 		 }
@@ -556,21 +558,90 @@ int getMessageContentIdRoom(char* request, char* MSG){
 	return atoi(content);
 }
 
-void stopRunningRoom(int roomid){
-	int i = 0, j;
+int stopRunningRoom(int roomid){
+	int i;
+	sem_wait(&semaphore_room);
 	msg_stop_room = roomid;
-	while ((i < simconfig.nRoomNumbers)&&(simconfig.roomList[i].roomID != roomid))
 
-	for (j = i; j < simconfig.nRoomNumbers -1 ; j++)
-		simconfig.roomList[j] = simconfig.roomList[j+1];
-	simconfig.nRoomNumbers -= 1;
+	i = 0;
+	while ((i < simconfig.nRoomNumbers)&&(simconfig.roomList[i].roomID != roomid)) i++;
+
+	if (i == simconfig.nRoomNumbers) {
+		sem_post(&semaphore_room);
+		return 0;
+	}
+
+	RoomStatus[i] = STATUS_STOP;
+	sleep(1);
+	msg_stop_room = NULL_MSG_STATUS;
+	sem_post(&semaphore_room);
+	return 1;
+}
+
+void stopAllRunningRoom(){
+	int i;
+	sem_wait(&semaphore_room);
+	for (i = 0; i < simconfig.nRoomNumbers; i++){
+		RoomStatus[i] = STATUS_STOP;
+		msg_stop_room = simconfig.roomList[i].roomID;
+		usleep(100);
+	}
+	msg_stop_room = NULL_MSG_STATUS;
+	sem_post(&semaphore_room);
+}
+
+int startRoom(int roomid){
+	int i;
+	sem_wait(&semaphore_room);
+	i = 0;
+	while ((i < simconfig.nRoomNumbers)&&(simconfig.roomList[i].roomID != roomid))   i++;
+
+	if (i == simconfig.nRoomNumbers) {
+		sem_post(&semaphore_room);
+		return 0;
+	}
+
+	RoomStatus[i] = STATUS_START;
+	pthread_t newRoomThread;
+	pthread_create(&newRoomThread, NULL, liveRoom, (void*)&simconfig.roomList[i]);
+	sem_post(&semaphore_room);
+	return 1;
+}
+void startAllRoom(){
+	int i;
+	sem_wait(&semaphore_room);
+	for (i = 0; i < simconfig.nRoomNumbers; i++){
+		RoomStatus[i] = STATUS_START;
+		pthread_t newRoomThread;
+		pthread_create(&newRoomThread, NULL, liveRoom, (void*)&simconfig.roomList[i]);
+		printf("\n\nLoaded room!\n"
+								"roomID: \t%d\n"
+								"width: \t%d\n"
+								"height: \t%d\n"
+								"sensor1: (%d, %d)\n"
+								"sensor2: (%d, %d)\n"
+								"sensor3: (%d, %d)\n"
+								"max object: \t%d\n"
+								,simconfig.roomList[i].roomID, simconfig.roomList[i].width, simconfig.roomList[i].height, simconfig.roomList[i].sensor1.x,
+								 simconfig.roomList[i].sensor1.y,simconfig.roomList[i].sensor2.x, simconfig.roomList[i].sensor2.y,
+								 simconfig.roomList[i].sensor3.x, simconfig.roomList[i].sensor3.y, simconfig.roomList[i].max_object);
+
+	}
+	sem_post(&semaphore_room);
 }
 
 int removeRoom(int roomid_remove){
-	stopRunningRoom(roomid_remove);
 	vWriteErrlogInfo("Change config file to remove room with path:%s", CONFIG_PATH);
+
+	int i = 0, j;
+	while ((i < simconfig.nRoomNumbers)&&(simconfig.roomList[i].roomID != roomid_remove))
+	for (j = i; j < simconfig.nRoomNumbers -1 ; j++){
+		simconfig.roomList[j] = simconfig.roomList[j+1];
+	}
+	simconfig.nRoomNumbers -= 1;
+
 	char line[MAX_LINE];
-	sem_wait(&semaphore);
+	sem_wait(&semaphore_file);
 	FILE* fconfig = fopen(CONFIG_PATH, "r");
 	FILE* ftemp = fopen(CONFIG_PATH_TEMP, "w");
 
@@ -618,7 +689,7 @@ int removeRoom(int roomid_remove){
 	}
 	fclose(fconfig);
 	fclose(ftemp);
-	sem_post(&semaphore);
+	sem_post(&semaphore_file);
 }
 
 int handleRequest(char* request, char* response)
@@ -634,7 +705,7 @@ int handleRequest(char* request, char* response)
 	{
 		respMesg = checkStatus();
 	}
-	else if (strcmp(request,MSG_STATUS_ROOM) == 0)
+	else if (strstr(request,MSG_STATUS_ROOM) != 0)
 	{
 		int id = getMessageContentIdRoom(request, RMROOM_MESG);
 		if (id){
@@ -647,31 +718,26 @@ int handleRequest(char* request, char* response)
 	}
 	else if (strstr(request, ADDROOM_MESG) != 0)
 	{
-		struct Room room;
-		/*
-		 * config room at here
-		 */
-
-		addRoom(room);
+		receiveAddingRoomMessage(request);
 	}
 	else if (strstr(request, RMROOM_MESG) != 0)
 	{
 		int id = getMessageContentIdRoom(request, RMROOM_MESG);
-		if (id){
+		if ((id) && (removeRoom(id))){
 			vWriteErrlogInfo("remove room which has id: %d\n", id);
-			removeRoom(id);
 		}
 		else{
+
 			vWriteErrlogInfo("\nCan not remove room because of error roomid");
 		}
 	}
 	else if (strstr(request, STOPROOM_MESG) != 0)
 	{
 		int id = getMessageContentIdRoom(request, STOPROOM_MESG);
-		if (id){
-			stopRunningRoom(id);
-		}
+		if ((id) && (stopRunningRoom(id))){
+			send(main_sockfd, MSG_RM_ROOM_SUCCESS, sizeof(MSG_RM_ROOM_SUCCESS));		}
 		else{
+			send(main_sockfd, MSG_CANN_RM_ROOM, sizeof(MSG_CANN_RM_ROOM));
 			vWriteErrlogInfo("\nCan not remove room because of error roomid");
 		}
 	}
@@ -680,7 +746,7 @@ int handleRequest(char* request, char* response)
 	return 1;
 }
 
-int addRoom(struct Room r){
+void addRoom(struct Room r){
 	char line[MAX_LINE];
 	int i;
 	pthread_t newRoomThread;
@@ -688,46 +754,49 @@ int addRoom(struct Room r){
 	pthread_create(&newRoomThread, NULL, liveRoom, (void*)&simconfig.roomList[simconfig.nRoomNumbers]);
 
 	simconfig.nRoomNumbers += 1;
+
 	/*
 	 * open file configuration to add room information
 	 */
-	sem_wait(&semaphore);
+	sem_wait(&semaphore_file);
 	FILE* fconfig = fopen(CONFIG_PATH, "w");
 	if(NULL == fconfig){
 		vWriteErrlogInfo("Cannot open file: %s for update\n", CONFIG_PATH);
-		return 0;
 	}
-	sprintf(line,"%s%s", NUMBER_OF_ROOMS, simconfig.nRoomNumbers);
+	sprintf(line,"%s%d\n", NUMBER_OF_ROOMS, simconfig.nRoomNumbers);
 	fputs(line, fconfig);
-	sprintf(line,"%s%d", INTERVAL, simconfig.nInterval);
+
+	sprintf(line,"%s%d\n", INTERVAL, simconfig.nInterval);
 	fputs(line, fconfig);
 	sprintf(line,"%s%s", IPADDR_LC, simconfig.lc_ipAddr);
 	fputs(line, fconfig);
-	sprintf(line,"%s%d", PORT_LC, simconfig.lc_nPort);
+	sprintf(line,"%s%d\n", PORT_LC, simconfig.lc_nPort);
 	fputs(line, fconfig);
 	sprintf(line,"%s%s", IPADDR_SV, simconfig.sv_ipAddr);
 	fputs(line, fconfig);
-	sprintf(line,"%s%d", PORT_SV, simconfig.sv_nPort);
+	sprintf(line,"%s%d\n", PORT_SV, simconfig.sv_nPort);
 	fputs(line, fconfig);
+	fputs("\n", fconfig);
 
 	for (i = 0; i < simconfig.nRoomNumbers; i++){
-		sprintf(line,"%s%d", ROOM_ID, simconfig.roomList[i].roomID);
+		sprintf(line,"%s%d\n", ROOM_ID, simconfig.roomList[i].roomID);
 		fputs(line, fconfig);
-		sprintf(line,"%s(%d,%f)", ROOM_ID, simconfig.roomList[i].sensor1.x, simconfig.roomList[i].sensor1.x);
+		sprintf(line,"%s(%d,%d)\n", SENSOR1, simconfig.roomList[i].sensor1.x, simconfig.roomList[i].sensor1.y);
 		fputs(line, fconfig);
-		sprintf(line,"%s(%d,%f)", ROOM_ID, simconfig.roomList[i].sensor2.x, simconfig.roomList[i].sensor2.x);
+		sprintf(line,"%s(%d,%d)\n", SENSOR2, simconfig.roomList[i].sensor2.x, simconfig.roomList[i].sensor2.y);
 		fputs(line, fconfig);
-		sprintf(line,"%s(%d,%f)", ROOM_ID, simconfig.roomList[i].sensor3.x, simconfig.roomList[i].sensor3.x);
+		sprintf(line,"%s(%d,%d)\n", SENSOR3, simconfig.roomList[i].sensor3.x, simconfig.roomList[i].sensor3.y);
 		fputs(line, fconfig);
-		sprintf(line,"%s%d", WIDTH, simconfig.roomList[i].width);
+		sprintf(line,"%s%d\n", WIDTH, simconfig.roomList[i].width);
 		fputs(line, fconfig);
-		sprintf(line,"%s%d", HEIGHT, simconfig.roomList[i].height);
+		sprintf(line,"%s%d\n", HEIGHT, simconfig.roomList[i].height);
 		fputs(line, fconfig);
-		sprintf(line,"%s%d", MAX_OJ, simconfig.roomList[i].max_object);
+		sprintf(line,"%s%d\n", MAX_OJ, simconfig.roomList[i].max_object);
 		fputs(line, fconfig);
+		fputs("\n", fconfig);
 	}
 	fclose(fconfig);
-	sem_post(&semaphore);
+	sem_post(&semaphore_file);
 }
 
 //int addObject(struct object oj, int roomid);
@@ -735,12 +804,78 @@ int addRoom(struct Room r){
 Function: listener
 Descript: Receive message from Poller Server
 */
+void getRoomValueFromMessage(char* line, struct Room *room){
+		if(strstr(line,ROOM_ID) != NULL){
+			room->roomID = atoi(getValue(line,ROOM_ID));
+		}
+		else if(strstr(line,SENSOR1) != NULL){
+			char* sensor1 = getValue(line,SENSOR1);
+			room->sensor1 = getPosition(sensor1);
+			vWriteErrlogInfo("room.sensor1: x:%d---y:%d\n", room->sensor1.x,room->sensor2.y);
+		}
+		else if(strstr(line,SENSOR2) != NULL){
+			char* sensor2 = getValue(line,SENSOR2);
+			room->sensor2 = getPosition(sensor2);
+			vWriteErrlogInfo("room.sensor2: x:%d---y:%d\n", room->sensor2.x,room->sensor2.y);
+		}
+		else if(strstr(line,SENSOR3) != NULL)
+		{
+			char* sensor3 = getValue(line,SENSOR3);
+			room->sensor3 = getPosition(sensor3);
+			vWriteErrlogInfo("room.sensor3: x:%d---y:%d\n", room->sensor3.x,room->sensor3.y);
+		}
+		else if(strstr(line,WIDTH) != NULL)
+		{
+			room->width = atoi(getValue(line,WIDTH));
+			vWriteErrlogInfo("width:%d\n", room->width);
+		}
+		else if(strstr(line,HEIGHT) != NULL)
+		{
+			room->height = atoi(getValue(line,HEIGHT));
+			vWriteErrlogInfo("height:%d\n", room->height);
+		}
+		else if(strstr(line,MAX_OJ) != NULL)
+		{
+			room->max_object = atoi(getValue(line, MAX_OJ));
+			vWriteErrlogInfo("Max object:%d\n", room->max_object);
+		}
+}
+
+void receiveAddingRoomMessage(char* msg){
+	int i = 0,
+		j = 0;
+	struct Room roominfo;
+	char data[REG_MAX_LEN];
+
+	while ((msg[i] != FIRSTCHAR_LABEL) && (i<strlen(msg))) i++;
+
+	while (i < strlen(msg)){
+		if (msg[i] != DIVIDE_MSG_ADDROOM){
+			data[j++] = msg[i];
+		}
+		else{
+			data[j] = '\0';
+			j = 0;
+			getRoomValueFromMessage(data, &roominfo);
+		}
+		i++;
+	}
+	//one more case when i meet the length of string but the loop can not recognize
+	data[j] = '\0';
+	getRoomValueFromMessage(data, &roominfo);
+	roominfo.roomID = simconfig.nRoomNumbers;
+
+	addRoom(roominfo);
+}
+
 void showRoomStatus(int roomid){
-	int i, meet = 0;
+	int i, status, meet = 0 ;
 
 	for (i = 0; i < simconfig.nRoomNumbers; i++){
 		if (roomid == simconfig.roomList[i].roomID) {
 			meet = 1;
+			status = RoomStatus[i];
+			break;
 		}
 	}
 
@@ -748,7 +883,12 @@ void showRoomStatus(int roomid){
 		sendRequest(MSG_STATUS_ROOM_NULL, simconfig.sv_ipAddr, simconfig.sv_nPort);
 	}
 	else{
-		msg_status_room = roomid;
+		if (status == STATUS_STOP) {
+			sendRequest(MSG_STATUS_ROOM_NULL, simconfig.sv_ipAddr, simconfig.sv_nPort);
+		}
+		if (status == STATUS_START) {
+			msg_status_room = roomid;
+		}
 	}
 }
 
@@ -895,17 +1035,21 @@ int start()
 		vWriteErrlogInfo("Already exist an instance is running.");
 		return 0;
 	}
-
-	for (i = 0; i < simconfig.nRoomNumbers; i++){
-			printf("\n\nLoaded room!\n"
-						"roomID: \t%d\n"
-						"width: \t%d\n"
-						"height: \t%d\n"
-						"max object: \t%d\n"
-						,simconfig.roomList[i].roomID, simconfig.roomList[i].width, simconfig.roomList[i].height, simconfig.roomList[i].max_object);
-			pthread_t newRoomThread;
-			pthread_create(&newRoomThread, NULL, liveRoom, (void*)&simconfig.roomList[i]);
-		}
+/*	struct Room r;
+	r.height= 50;
+	r.width = 14;
+	r.roomID = 5;
+	r.sensor1.x = 8;
+	r.sensor1.y = 10;
+	r.sensor2.x =14;
+	r.sensor2.y = 6;
+	r.sensor3.x = 1;
+	r.sensor3.y = 1;
+	r.max_object = 10;
+	addRoom(r);*/
+	char str[] = "addroom <SENSOR2>:(9,10);<SENSOR3>:  (7,5);<WIDTH>:   85;<HEIGHT>: 90;<SENSOR1>:(7,2);<MAX OJ>: 5";
+	receiveAddingRoomMessage(str);
+	startAllRoom();
 	/*while(1){
 		int id;
 		printf("Enter id room you wana stop: "); scanf("%d", &id);
@@ -920,15 +1064,14 @@ int start()
 		return 0;
 	}
 
-
-
 	pthread_join(listen_thread, NULL );
 	return 1;
 }
 
 int main(int argc, char **argv)
 {
-	sem_init(&semaphore, 0, 1);
+	sem_init(&semaphore_file, 0, 1);
+	sem_init(&semaphore_room, 0, 1);
 	vWriteErrlogInfo("Start simulator");
 	char strRequest[REG_MAX_LEN];
 	bool bIsNeedToSendReq;
@@ -963,7 +1106,7 @@ int main(int argc, char **argv)
 	}
 	else if(strcmp(strRequest,STATUS_MESG) == 0)
 	{
-			 bIsNeedToSendReq = true;
+		bIsNeedToSendReq = true;
 	}
 	else
 	{
